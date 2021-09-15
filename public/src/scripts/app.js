@@ -14,26 +14,31 @@ const fetchPokemon = () => {
            console.log(pokemons)
             const liPokemons = pokemons.reduce((accumulator, pokemon) =>{
                 const types = pokemon.types.map(typeInfo => typeInfo.type.name)
-                accumulator += `
-                <li class = "card" ${types[0]}>
-                    <img class = "cardImage " alt = "${pokemon.name}" src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"/>
-                   <h2 class = "cardTitle">${pokemon.id}. ${pokemon.name}</h2> 
-                   <p class = "cardSubtitle">${types.join(' | ')}</p>
+                const abilities = pokemon.abilities.map(abilitiesInfo => abilitiesInfo.ability.name)
+                const status = pokemon.stats.map(statsInfo => statsInfo.stat.name)
+                const namePokemon = pokemon.name
+                const id = pokemon.id
 
+                accumulator += `
+                <li class = "card">
+                    <img  alt="${namePokemon}" src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png" }></img>
+                    <h2 class ="card-title"> ${id}. ${namePokemon}. </h2>
+                    <p calss="typeIndex ${types[0]}"> ${types.join(' | ')}</p>
+                    <p class="moves">${abilities.join(' | ')}</p>
+                    <div>
+                        
+                    </div>
                 </li>
                 `
                 return accumulator
+
+                console.log(liPokemons)
 
             },'')
             const ul  = document.querySelector('[data-js = pokedex]')
             //console.log(ul)
             ul.innerHTML = liPokemons
         })
-    /*fetch(getPokemonUrl)
-        .then(response => response.json())
-        .then(pokemon =>{
-            console.log(pokemon)
-        })*/
 }
 
 fetchPokemon()

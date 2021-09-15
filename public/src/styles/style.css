@@ -11,17 +11,9 @@ body {
 	margin: 0 auto;
 }
 
-span {
-	background-color: #1f1003;
-	font-size: 40px;
-	padding: 10px;
-}
-
-.spanContainer{
-	align-items: center;
-	width: 0 auto;
-	display: flex;
-	flex-direction: column;
+h1 {
+	text-align: center;
+	font-size: 54px;
 }
 
 .pokedex {
@@ -128,7 +120,12 @@ span {
 	position: relative;
 	z-index: 2;
 }
-
+.moves{
+	display: none;
+}
+.typeIndex{
+	z-index: 2;
+}
 @keyframes bounce {
 	20% {
 			transform: translateY(-6px);
